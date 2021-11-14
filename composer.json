@@ -1,0 +1,21 @@
+{
+    "description": "Telegram bot framework core",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "Moss Maurice",
+        "email": "kreexus@yandex.ru",
+        "role": "developer"
+    }],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4",
+        "telegram-bot/api": "2.3.23",
+        "php-di/php-di": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "mmaurice\\tgbot\\": "src/"
+        }
+    }
+}
