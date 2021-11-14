@@ -1,5 +1,5 @@
 {
-    "name": "moss-maurice/tgbot-core",
+    "name": "mmaurice/tgbot-core",
     "description": "Telegram bot framework core",
     "type": "library",
     "license": "MIT",
