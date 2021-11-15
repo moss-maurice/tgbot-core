@@ -129,7 +129,7 @@ abstract class Command
 
         if (is_array($commands) and !empty($commands)) {
             foreach ($commands as $command => $class) {
-                if (($selfExclude and ($class === get_called_class())) or ($class !== get_called_class())) {
+                if (($selfInclude and ($class === get_called_class())) or ($class !== get_called_class())) {
                     if (is_null($type) or ($class::$type === $type)) {
                         $results[] = !is_null($class::$alias) ? $class::$alias : $class::commandName();
                     }
