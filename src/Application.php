@@ -36,7 +36,7 @@ class Application
 
         if ($mode === self::MODE_CLIENT) {
             if (strtolower($_SERVER['REQUEST_METHOD']) !== 'post') {
-                die('Access denied!');
+                throw new Exception('Access denied!');
             }
 
             self::$di->set('router', new Router(self::$di->get('client')));
@@ -81,14 +81,20 @@ class Application
             $router = self::$di->get('router');
 
             $router->run();
+        } else {
+            throw new Exception('Router running available only in CLIENT application mode');
         }
     }
 
     public function error(Exception $exception)
     {
-        $router = self::$di->get('router');
+        if ($this->mode === self::MODE_CLIENT) {
+            $router = self::$di->get('router');
 
-        $router->error($exception);
+            $router->error($exception);
+        } else if ($this->mode === self::MODE_SENDER) {
+            echo $exception;
+        }
     }
 
     static public function commands()
