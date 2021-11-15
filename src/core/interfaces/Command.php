@@ -95,7 +95,7 @@ abstract class Command
             }
         }
 
-        $this->client->sendMessage($this->message->getChat()->getId(), $view, $this->parserMode, false, null, $keyboardObject);
+        Application::sendMessage($this->message->getChat()->getId(), $view, $this->parserMode, $keyboardObject);
     }
 
     protected function renderView($view, $properties = [])
