@@ -13,7 +13,7 @@ class MenuCommand extends Command
 
     public function keyboard($keyboard = [])
     {
-        return parent::keyboard(array_merge($this->commandsAliases(self::TYPE_PUBLIC), $this->commandsAliases(self::TYPE_SYSTEM)));
+        return parent::keyboard(array_merge($this->commandsAliases(self::TYPE_PUBLIC), $this->commandsAliases(self::TYPE_SYSTEM, false)));
     }
 
     public function execute($message = '')

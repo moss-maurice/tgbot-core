@@ -13,7 +13,7 @@ class StartCommand extends Command
 
     public function keyboard($keyboard = [])
     {
-        return parent::keyboard($this->commandsAliases(self::TYPE_SYSTEM));
+        return parent::keyboard($this->commandsAliases(self::TYPE_SYSTEM, false));
     }
 
     public function execute($message = '')
