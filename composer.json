@@ -12,7 +12,8 @@
     "require": {
         "php": ">=7.4",
         "telegram-bot/api": "2.3.23",
-        "php-di/php-di": "dev-master"
+        "php-di/php-di": "dev-master",
+        "rakibtg/sleekdb": "dev-master"
     },
     "autoload": {
         "psr-4": {
