@@ -19,9 +19,14 @@ abstract class Command
 
     const KEYBOARD_COLUMNS = 4;
 
+    const TYPE_PUBLIC = 'public';
+    const TYPE_SYSTEM = 'system';
+    const TYPE_HIDDEN = 'hidden';
+
     static public $description = '';
     static public $order = 1000;
     static public $alias;
+    static public $type = self::TYPE_PUBLIC;
 
     protected $message;
     protected $client;
@@ -116,7 +121,7 @@ abstract class Command
         return trim(ob_get_clean());
     }
 
-    protected function commandsAliases($selfInclude = true)
+    protected function commandsAliases($type = null, $selfInclude = true)
     {
         $results = [];
 
@@ -125,7 +130,9 @@ abstract class Command
         if (is_array($commands) and !empty($commands)) {
             foreach ($commands as $command => $class) {
                 if (($selfExclude and ($class === get_called_class())) or ($class !== get_called_class())) {
-                    $results[] = $class::$alias;
+                    if (is_null($type) or ($class::$type === $type)) {
+                        $results[] = !is_null($class::$alias) ? $class::$alias : $class::commandName();
+                    }
                 }
             }
         }
@@ -133,7 +140,7 @@ abstract class Command
         return array_values(array_filter($results));
     }
 
-    protected function commandsDescriptions()
+    protected function commandsDescriptions($type = null)
     {
         $results = [];
 
@@ -141,7 +148,9 @@ abstract class Command
 
         if (is_array($commands) and !empty($commands)) {
             foreach ($commands as $command => $class) {
-                $results[$command] = $class::$description;
+                if (is_null($type) or ($class::$type === $type)) {
+                    $results[$command] = $class::$description;
+                }
             }
         }
 

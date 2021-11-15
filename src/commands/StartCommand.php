@@ -2,8 +2,6 @@
 
 namespace mmaurice\tgbot\commands;
 
-use \mmaurice\tgbot\commands\HelpCommand;
-use \mmaurice\tgbot\commands\MenuCommand;
 use \mmaurice\tgbot\core\interfaces\Command;
 
 class StartCommand extends Command
@@ -11,13 +9,11 @@ class StartCommand extends Command
     static public $description = 'Начало работы с ботом';
     static public $order = 0;
     static public $alias = 'Начать';
+    static public $type = self::TYPE_HIDDEN;
 
     public function keyboard($keyboard = [])
     {
-        return parent::keyboard([
-            !is_null(HelpCommand::$alias) ? HelpCommand::$alias : HelpCommand::commandName(),
-            !is_null(MenuCommand::$alias) ? MenuCommand::$alias : MenuCommand::commandName(),
-        ]);
+        return parent::keyboard($this->commandsAliases(self::TYPE_SYSTEM));
     }
 
     public function execute($message = '')

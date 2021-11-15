@@ -8,6 +8,8 @@ use \mmaurice\tgbot\core\interfaces\Command;
 
 class MainCommand extends Command
 {
+    static public $type = self::TYPE_HIDDEN;
+
     public function keyboard($keyboard = [])
     {
         return parent::keyboard([

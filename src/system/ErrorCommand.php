@@ -9,6 +9,8 @@ use \TelegramBot\Api\Client;
 
 class ErrorCommand extends Command
 {
+    static public $type = self::TYPE_HIDDEN;
+
     public function keyboard($keyboard = [])
     {
         return parent::keyboard([
