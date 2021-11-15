@@ -6,6 +6,7 @@ use \DI\Container;
 use \Exception;
 use \mmaurice\tgbot\core\Config;
 use \mmaurice\tgbot\core\Router;
+use \mmaurice\tgbot\core\Store;
 use \TelegramBot\Api\Client;
 
 class Application
@@ -24,6 +25,7 @@ class Application
         self::$di->set('config', new Config($config));
         self::$di->set('client', new Client(TOKEN));
         self::$di->set('router', new Router(self::$di->get('client')));
+        self::$di->set('store', new Store(self::$di->get('config')->get('sleekdb.store', APP_ROOT . '/runtime/sleekdb/')));
 
         $this->importSource(__NAMESPACE__);
     }
