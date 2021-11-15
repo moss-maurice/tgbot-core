@@ -7,7 +7,7 @@ use \mmaurice\tgbot\core\interfaces\Command;
 class HelpCommand extends Command
 {
     static public $description = 'Справка по командам бота';
-    static public $order = 1;
+    static public $order = 2;
     static public $alias = 'Помощь';
     static public $type = self::TYPE_SYSTEM;
 

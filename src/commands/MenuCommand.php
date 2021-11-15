@@ -7,7 +7,7 @@ use \mmaurice\tgbot\core\interfaces\Command;
 class MenuCommand extends Command
 {
     static public $description = 'Меню команд';
-    static public $order = 2;
+    static public $order = 1;
     static public $alias = 'Меню';
     static public $type = self::TYPE_SYSTEM;
 
